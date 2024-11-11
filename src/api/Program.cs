@@ -38,6 +38,12 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/hello", () => "Hello, Team!");
 
+app.MapGet("/kv", (IConfiguration configuration) =>
+{
+    var myKeyValue = configuration["MyKey"];
+    return myKeyValue;
+});
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
