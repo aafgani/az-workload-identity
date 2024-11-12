@@ -38,10 +38,10 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/hello", () => "Hello, Team!");
 
-app.MapGet("/kv", (IConfiguration configuration) =>
+app.MapGet("/getconfig", (IConfiguration configuration, string key) =>
 {
-    var myKeyValue = configuration["MyKey"];
-    return myKeyValue;
+    var myKeyValue = configuration[key];
+    return myKeyValue ?? "key not found";
 });
 
 app.Run();
